@@ -2,6 +2,7 @@
 members = ["projects/*"]
 default-members = [
     "projects/xo-basic",
+    "projects/xo-web",
 ]
 exclude = [
     "projects/.DS_Store",
