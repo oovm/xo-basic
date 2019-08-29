@@ -1,4 +1,4 @@
-#[derive(Debug)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum Tile {
     None,
     X,
@@ -18,10 +18,18 @@ pub enum Player {
 }
 
 impl Iterator for Player {
-    type Item = ();
-
+    type Item = Player;
     fn next(&mut self) -> Option<Self::Item> {
-        unimplemented!()
+        match self {
+            Player::X => Some(Player::O),
+            Player::O => Some(Player::X),
+        }
+    }
+}
+
+impl Default for Player {
+    fn default() -> Self {
+        Self::X
     }
 }
 

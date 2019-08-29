@@ -10,6 +10,7 @@ license = "MPL-2.0"
 edition = "2018"
 
 [dependencies]
+rubot = "0.3"
 
 [dev-dependencies]
 

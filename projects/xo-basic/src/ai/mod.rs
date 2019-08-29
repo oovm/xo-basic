@@ -1,3 +1,8 @@
+use crate::{
+    game::{Player, Winner},
+    Game,
+};
+
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub struct Action(usize, usize);
 
@@ -10,10 +15,10 @@ pub enum Fitness {
 }
 
 impl rubot::Game for Game {
-    type Player = Piece;
+    type Player = Player;
     type Action = Action;
-    type Actions = Vec<Action>;
     type Fitness = Fitness;
+    type Actions = Vec<Action>;
 
     fn actions(&self, player: Self::Player) -> (bool, Self::Actions) {
         let mut actions = Vec::new();
@@ -38,16 +43,18 @@ impl rubot::Game for Game {
         match self.winner() {
             None | Some(Winner::Tie) => Fitness::Even,
             Some(Winner::O) => {
-                if player == Piece::O {
+                if player == Player::O {
                     Fitness::Win
-                } else {
+                }
+                else {
                     Fitness::Loss
                 }
             }
             Some(Winner::X) => {
-                if player == Piece::X {
+                if player == Player::X {
                     Fitness::Win
-                } else {
+                }
+                else {
                     Fitness::Loss
                 }
             }
