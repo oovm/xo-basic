@@ -2,8 +2,9 @@ use crate::game::utils::{Player, Tile, Winner};
 
 #[derive(Default, Debug, Clone)]
 pub struct Game {
-    board: [Tile; 9],
-    player: Player,
+    pub board: [Tile; 9],
+    pub player: Player,
+    pub record: Vec<usize>,
 }
 
 impl Game {
@@ -53,12 +54,13 @@ impl Game {
         }
     }
 
-    pub fn do_move(&mut self, p: usize) {
+    pub fn make_move(&mut self, p: usize) {
+        self.record.push(p);
         self.board[p] = match self.player {
             Player::X => Tile::X,
             Player::O => Tile::O,
         };
-        self.player = self.player.next().unwrap()
+        self.player.next()
     }
 }
 

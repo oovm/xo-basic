@@ -17,12 +17,15 @@ pub enum Player {
     O,
 }
 
-impl Iterator for Player {
-    type Item = Player;
-    fn next(&mut self) -> Option<Self::Item> {
+impl Player {
+    pub fn next(&mut self) {
+        *self = self.switch()
+    }
+    pub fn switch(&self) -> Player {
+        use Player::{O, X};
         match self {
-            Player::X => Some(Player::O),
-            Player::O => Some(Player::X),
+            X => O,
+            O => X,
         }
     }
 }

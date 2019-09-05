@@ -1,17 +1,20 @@
-use crate::{
-    game::{Player, Winner},
-    Game,
-};
+use crate::{Game, Player, Winner};
 
 #[derive(Debug, Copy, Clone, PartialEq)]
-pub struct Action(usize, usize);
+pub struct Action(usize);
+
+impl From<u32> for Action {
+    fn from(u: u32) -> Self {
+        Action(u as usize)
+    }
+}
 
 #[derive(Debug, Copy, Clone, PartialOrd, Ord, PartialEq, Eq)]
 pub enum Fitness {
+    Win,
     Loss,
     /// the game is still ongoing or a tie
     Even,
-    Win,
 }
 
 impl rubot::Game for Game {
@@ -23,24 +26,14 @@ impl rubot::Game for Game {
     fn actions(&self, player: Self::Player) -> (bool, Self::Actions) {
         let mut actions = Vec::new();
         if !self.is_finished() {
-            for x in 0..3 {
-                for y in 0..3 {
-                    if let None = self.tiles()[x][y] {
-                        actions.push(Action(x, y));
-                    }
-                }
-            }
+            actions = self.available_moves().iter().map(|e| Action(*e)).collect()
         }
-        (player == self.current_piece(), actions)
+        (player == self.player, actions)
     }
 
     fn execute(&mut self, action: &Self::Action, player: Self::Player) -> Self::Fitness {
-        match self.make_move(action.0, action.1) {
-            Ok(()) => (),
-            Err(e) => unreachable!("Error: {:?}", e),
-        }
-
-        match self.winner() {
+        self.make_move(action.0);
+        match self.check_winner() {
             None | Some(Winner::Tie) => Fitness::Even,
             Some(Winner::O) => {
                 if player == Player::O {
@@ -67,22 +60,5 @@ impl rubot::Game for Game {
 
     fn is_lower_bound(&self, fitness: Self::Fitness, _: Self::Player) -> bool {
         fitness == Fitness::Loss
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use rubot::{Bot, Logger, ToCompletion};
-
-    #[test]
-    fn first_pos() {
-        let mut game = Game::new();
-        game.make_move(0, 0).unwrap();
-
-        let mut opponent = Bot::new(Piece::O);
-        let mut logger = Logger::new(ToCompletion);
-        assert_eq!(opponent.select(&game, &mut logger).unwrap(), Action(1, 1));
-        assert!(logger.duration() < Duration::from_secs(1));
     }
 }
