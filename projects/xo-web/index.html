@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Tic-Tac-Toe - Play retro Tic-Tac-Toe online for free</title>
+    <meta name="description"
+          content="Play the classic Tic-Tac-Toe game (also called Noughts and Crosses) for free online with one or two players.">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+    <meta name="referrer" content="origin">
+    <meta name="theme-color" content="#000">
+    <link rel="image_src" href="./assets/icon-800">
+    <link rel="shortcut icon" href="./assets/icon-32">
+    <link rel="icon" sizes="16x16" href="./assets/icon-32">
+    <link rel="icon" sizes="32x32" href="./assets/icon-32">
+    <link rel="icon" sizes="100x100" href="./assets/icon-800">
+    <link rel="icon" sizes="200x200" href="./assets/icon-800">
+    <link rel="icon" sizes="800x800" href="./assets/icon-800">
+    <link rel="stylesheet" href="./assets/index.scss"/>
+</head>
+
+<body class="mobile">
+<div class="alt">
+    <h1>Tic-Tac-Toe</h1>
+    <p>Play a retro version of tic-tac-toe (noughts and crosses, tres en raya) against the computer or with two
+        players.</p>
+</div>
+<div class="mute">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <g fill="#fff">
+            <polygon points="14.025,38.004 14.025,61.993 31.548,61.993 55.537,85.982 55.537,14.018 31.552,38.004">
+            </polygon>
+            <path
+                    d="M67.41,34.095l-4.243,4.239c6.43,6.432,6.43,16.896,0,23.324L67.41,65.9C76.179,57.129,76.179,42.864,67.41,34.095z"
+                    style=""></path>
+            <path
+                    d="M75.89,25.616l-4.241,4.239c11.105,11.105,11.105,29.176,0,40.284l4.241,4.241C89.337,60.934,89.337,39.06,75.89,25.616z"
+                    style=""></path>
+        </g>
+    </svg>
+</div>
+<div class="game">
+    <div class="board">
+        <div class="square top left" tabindex="0">
+            <div class=""></div>
+        </div>
+        <div class="square top" tabindex="0">
+            <div class=""></div>
+        </div>
+        <div class="square top right" tabindex="0">
+            <div class=""></div>
+        </div>
+        <div class="square left" tabindex="0">
+            <div class="o"></div>
+        </div>
+        <div class="square" tabindex="0">
+            <div class="x"></div>
+        </div>
+        <div class="square right" tabindex="0">
+            <div class=""></div>
+        </div>
+        <div class="square bottom left" tabindex="0">
+            <div class=""></div>
+        </div>
+        <div class="square bottom" tabindex="0">
+            <div class=""></div>
+        </div>
+        <div class="square bottom right" tabindex="0">
+            <div class=""></div>
+        </div>
+    </div>
+    <div class="restart" style="display: none;"></div>
+</div>
+<div class="scores p1">
+    <p class="player1"><span class="p1">玩家</span><span class="p2">玩家 1</span> (<span class="x"></span>)<span
+            class="score">0</span></p>
+    <p class="ties">–<span class="score">0</span></p>
+    <p class="player2"><span class="p1">电脑</span><span class="p2">玩家 2</span> (<span class="o"></span>)<span
+            class="score">0</span></p>
+    <div class="swap" tabindex="0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <g fill="#fff">
+                <path class="p1"
+                      d="M49.947,90.991c0.693,0,1.41,0.02,2.104,0c13.547-0.201,26.439-1.723,28.775-3.945 c0.537-4.928,1.195-7.311-20.65-17.644c-3.107-1.742-1.465-8.492-1.465-8.492c6.578-4.969,11.096-16.463,11.096-25.676 c0-15.921-7.18-23.453-17.756-24.234h-2.104c-10.557,0.781-17.734,8.312-17.734,24.234c0,9.213,4.496,20.707,11.078,25.676 c0,0,1.641,6.75-1.449,8.492C19.979,79.735,20.635,82.118,21.176,87.046C23.51,89.269,36.402,90.79,49.947,90.991z">
+                </path>
+                <path class="p2"
+                      d="M66.219,85h1.562c9.92-0.14,19.38-1.2,21.08-2.779c0.422-3.44,0.9-5.101-15.142-12.341 c-2.279-1.22-1.059-5.939-1.059-5.939c4.822-3.48,8.123-11.521,8.123-17.98c0-11.14-5.263-16.419-13.001-16.959h-1.562 c-7.738,0.54-13,5.799-13,16.959c0,6.46,3.301,14.5,8.121,17.98c0,0,1.221,4.719-1.059,5.939c-16.041,7.24-15.562,8.9-15.14,12.341 C46.84,83.8,56.301,84.86,66.219,85z M30.217,69h1.564c9.918-0.14,19.378-1.2,21.078-2.779c0.422-3.44,0.9-5.1-15.14-12.34 c-2.279-1.22-1.059-5.939-1.059-5.939c4.82-3.48,8.121-11.521,8.121-17.98c0-11.14-5.262-16.42-13-16.96h-1.564 c-7.738,0.54-13,5.8-13,16.96c0,6.459,3.301,14.5,8.121,17.98c0,0,1.221,4.72-1.059,5.939c-16.041,7.24-15.562,8.9-15.14,12.34 C10.839,67.8,20.299,68.86,30.217,69z">
+                </path>
+            </g>
+        </svg>
+        <p class="p1">1</p>
+        <p class="p2">2</p>
+    </div>
+</div>
+<script>
+    (function (t, r) { "use strict"; function a(e, t, r, o) { ga("send", "event", e, t, r, o) } t.onerror = function (e, t, r) { if (e) { a("Error", e, t && r ? "[" + t + ":" + r + "]" : "", true) } return false }; t.AudioContext = t.AudioContext || t.webkitAudioContext; var o = function (e) { try { var t = "_"; e.setItem(t, t); e.removeItem(t); return true } catch (e) { return false } }(t.localStorage); if (t.location !== t.top.location || t.location.href && !t.location.href.match(/playtictactoe\.org|192\.168/)) { } (function (e, t, r, o, s, a, n) { e["GoogleAnalyticsObject"] = s; e[s] = e[s] || function () { (e[s].q = e[s].q || []).push(arguments) }, e[s].l = 1 * new Date; a = t.createElement(r), n = t.getElementsByTagName(r)[0]; a.async = 1; a.src = o; n.parentNode.insertBefore(a, n) })(t, r, "script", "https://www.google-analytics.com/analytics.js", "ga"); var e = r.getElementById("consent"); var s = !!e; var n = "UA-56095-18"; t["ga-disable-" + n] = s; ga("set", "anonymizeIp", true); ga("create", n, "auto"); function i() { (t.adsbygoogle || []).pauseAdRequests = 0; t["ga-disable-" + n] = false; ga("send", "pageview"); if (s) { r.body.classList.add("cookies-consent") } } function c() { if (!s || o && localStorage.getItem("consent")) { i() } else { e.addEventListener("click", function () { i(); if (o) { localStorage.setItem("consent", true) } }) } } function u(t) { var e = new XMLHttpRequest; e.open("GET", "/assets/audio/" + t + ".mp3", true); e.responseType = "arraybuffer"; e.onload = function () { g.decodeAudioData(e.response, function (e) { v[t] = e }, function () { }) }; e.send() } function y(e) { if (L || !v[e]) { return } if (g && g.resume) { g.resume() } var t = g.createBufferSource(); t.buffer = v[e]; t.connect(g.destination); if (t.start) { t.start(0) } else { t.noteOn(0) } } var l = {}, f = { player1: 0, player2: 0, ties: 0 }, d = { player1: 0, player2: 0, ties: 0 }, p = "x", m = "o", v = {}, g, h = 9, L, q, w = true, S = true, b = false, T = 300, M = .75, A, k = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]; function D() { for (var e = l.mute.length; e--;) { l.mute[e].style.display = L ? "none" : "" } } function I() { L = !L; if (o) { localStorage.setItem("muted", L.toString()) } D(); a("Mute", L ? "muted" : "unmuted") } function B() { b = !b; var e = l.scores.scores.classList; if (b) { e.remove("p1"); e.add("p2"); S = true } else { e.remove("p2"); e.add("p1"); S = false } a("Mode", b ? "players" : "computer"); l.scores.player1.innerHTML = b ? d.player1 : f.player1; l.scores.player2.innerHTML = b ? d.player2 : f.player2; l.scores.ties.innerHTML = b ? d.ties : f.ties; q = false; j() } function E(e, t) { l.squares[t].querySelector("div").classList.add(e) } function H() { var e = l.scores.turn1.classList, t = l.scores.turn2.classList, r = l.scores.turnTies.classList; if (b && l.restart.style.display === "none") { if (w) { t.remove("turn"); e.add("turn") } else { e.remove("turn"); t.add("turn") } r.add("turn") } else { e.remove("turn"); t.remove("turn"); r.remove("turn") } } function x(e) { if (A[e] !== 0 || G() || !b && w) { return } if (b) { w = !w; A[e] = w ? -1 : 1; E(w ? p : m, e); y("note-" + (w ? "low" : "high")); G() } else { A[e] = -1; E(p, e); w = true; y("note-low"); setTimeout(N, T) } H() } function C(o, s) { l.restart.style.display = "block"; setTimeout(function () { var e = "Game", t = b ? "players " : "computer "; setTimeout(function () { q = false }, T); if (s) { for (var r = 3; r--;) { l.squares[s[r]].classList.add("win") } } switch (o) { case p: l.scores.player1.innerHTML = b ? ++d.player1 : ++f.player1; l.scores.player1.classList.add("appear"); l.board.classList.add("win"); y("game-over"); a(e, t + (b ? p : "lose")); break; case m: l.scores.player2.innerHTML = b ? ++d.player2 : ++f.player2; l.scores.player2.classList.add("appear"); l.board.classList.add("win"); y("game-over"); a(e, t + (b ? m : "win")); break; default: l.scores.ties.innerHTML = b ? ++d.ties : ++f.ties; l.scores.ties.classList.add("appear"); l.board.classList.add("tie"); y("game-over-tie"); a(e, t + "tie"); break } }, w && !b ? 100 : T + 100) } function G() { for (var e = k.length; e--;) { var t = k[e], r = A[t[0]] + A[t[1]] + A[t[2]]; if (r === 3 || r === -3) { C(r === 3 ? m : p, t); return true } } var o = 0; for (e = h; e--;) { if (A[e] !== 0) { o++ } } if (o === 9) { C(); return true } return false } function N() { if (G()) { return } var e, t, r, o, s, a, n = 0; w = false; H(); y("note-high"); for (e = h; e--;) { if (A[e] !== 0) { n++; if (n === 1) { a = e } } } if (n < 2 && Math.random() > .2) { do { s = Math.floor(Math.random() * h) } while (s === a) } else { for (e = h; e--;) { for (t = h; t--;) { if (A[t] !== 0) { continue } A[t] = 1; if (G()) { E(m, t); return } A[t] = 0 } if (A[e] !== 0) { continue } A[e] = 1; var i = null, c = A.concat(); for (t = h; t--;) { if (c[t] !== 0) { continue } c[t] = -1; for (r = k.length; r--;) { if (c[k[r][0]] + c[k[r][1]] + c[k[r][2]] === -3 && Math.random() > M) { A[e] = 0; A[t] = 1; E(m, t); G(); return } } var u = 0, l = 0, f = c.concat(), d = c.concat(); for (r = h; r--;) { if (f[r] === 0) { f[r] = 1 } if (d[r] === 0) { d[r] = -1 } } for (r = k.length; r--;) { if (f[k[r][0]] + f[k[r][1]] + f[k[r][2]] === 3) { u++ } if (d[k[r][0]] + d[k[r][1]] + d[k[r][2]] === -3) { l++ } } var p = u - l; i = i == null ? p : i > p ? p : i; c[t] = 0 } if (o == null || o < i) { o = i; s = e } A[e] = 0 } } A[s] = 1; E(m, s); G() } function O(t) { l.squares[t].ontouchstart = l.squares[t].onmousedown = function (e) { e.preventDefault(); x(t) } } function j() { if (q) { return } q = true; l.restart.style.display = "none"; A = [0, 0, 0, 0, 0, 0, 0, 0, 0]; for (var e = h; e--;) { l.squares[e].classList.remove("win"); l.squares[e].querySelector("div").className = "" } l.scores.ties.classList.remove("appear"); l.scores.player1.classList.remove("appear"); l.scores.player2.classList.remove("appear"); l.board.classList.remove("win"); l.board.classList.remove("tie"); w = S = !S; H(); if (S && !b) { setTimeout(N, T) } } r.addEventListener("DOMContentLoaded", function () { l = { board: r.querySelector(".board"), squares: r.querySelectorAll(".square"), restart: r.querySelector(".restart"), muteButton: r.querySelector(".mute"), mute: r.querySelectorAll(".mute path"), privacy: r.querySelector(".privacy"), scores: { scores: r.querySelector(".scores"), swap: r.querySelector(".swap"), player1: r.querySelector(".player1 .score"), player2: r.querySelector(".player2 .score"), ties: r.querySelector(".ties .score"), turn1: r.querySelector(".player1"), turn2: r.querySelector(".player2"), turnTies: r.querySelector(".ties") } }; for (var e = h; e--;) { O(e) } l.restart.ontouchstart = l.scores.scores.ontouchstart = function (e) { e.preventDefault() }; l.scores.scores.ontouchend = l.scores.scores.onclick = function (e) { e.preventDefault(); B() }; l.restart.ontouchend = l.restart.onclick = function (e) { e.preventDefault(); j() }; if (t.AudioContext) { g = new AudioContext; u("note-high"); u("note-low"); u("game-over"); u("game-over-tie"); L = o ? localStorage.getItem("muted") === "true" : false; D(); l.muteButton.ontouchstart = l.muteButton.onclick = function (e) { e.preventDefault(); I() } } c(); j() }) })(window, document);
+</script>
+
+</body>
+
+</html>
