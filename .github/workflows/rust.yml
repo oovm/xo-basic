@@ -30,9 +30,8 @@ jobs:
         with:
           version: 'latest'
       - name: trunk build
-        env: VERSION=v0.6.0
         run: |
-          wget -qO- https://github.com/thedodd/trunk/releases/download/${VERSION}/trunk-x86_64-unknown-linux-gnu.tar.gz | tar -xzf-
+          wget -qO- https://github.com/thedodd/trunk/releases/download/v0.6.0/trunk-x86_64-unknown-linux-gnu.tar.gz | tar -xzf-
           cd projects/xo-web
           trunk build
       - name: Deploy to github pages

@@ -6,9 +6,9 @@ use std::{
 };
 
 lazy_static! {
-    pub static ref EN: HashMap<&'static str, String> =  build_string_map(include_str!("../../i18n/en/basic.yml")) ;
-    pub static ref CHS: HashMap<&'static str, String> =  build_string_map(include_str!("../../i18n/zh-Hans/basic.yml")) ;
-    pub static ref CHT: HashMap<&'static str, String> =  build_string_map(include_str!("../../i18n/zh-Hant/basic.yml")) ;
+    pub static ref EN: HashMap<&'static str, String> = build_string_map(include_str!("../../i18n/en/basic.yml"));
+    pub static ref CHS: HashMap<&'static str, String> = build_string_map(include_str!("../../i18n/zh-Hans/basic.yml"));
+    pub static ref CHT: HashMap<&'static str, String> = build_string_map(include_str!("../../i18n/zh-Hant/basic.yml"));
 }
 
 #[derive(Debug)]

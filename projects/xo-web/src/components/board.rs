@@ -1,6 +1,4 @@
-use crate::{
-    agents::global::{GlobalStore, Request},
-};
+use crate::agents::global::{GlobalStore, Request};
 use xo_basic::Game;
 use yew::prelude::*;
 use yewtil::{
