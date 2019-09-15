@@ -34,7 +34,7 @@ impl rubot::Game for Game {
     fn execute(&mut self, action: &Self::Action, player: Self::Player) -> Self::Fitness {
         self.make_move(action.0);
         match self.check_winner() {
-            None | Some(Winner::Tie) => Fitness::Even,
+            None | Some(Winner::Draw) => Fitness::Even,
             Some(Winner::O) => {
                 if player == Player::O {
                     Fitness::Win

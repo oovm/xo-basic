@@ -35,7 +35,7 @@ impl Game {
         if let Some(s) = self.match_winner(&s[0], &s[4], &s[8]) { return Some(s); }
         // check diag 2
         if let Some(s) = self.match_winner(&s[2], &s[4], &s[6]) { return Some(s); }
-        if self.available_moves().len() == 0 { Some(Winner::Tie) } else { None }
+        if self.available_moves().len() == 0 { Some(Winner::Draw) } else { None }
     }
 
     pub fn available_moves(&self) -> Vec<usize> {

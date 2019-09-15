@@ -1,6 +1,5 @@
 use crate::{
     agents::global::{GlobalStore, Request},
-    components::TextInput,
 };
 use xo_basic::Game;
 use yew::prelude::*;
@@ -17,14 +16,14 @@ pub enum Event {
 
 pub struct ShowBoard {
     link: ComponentLink<Self>,
+    store: Box<dyn Bridge<StoreWrapper<GlobalStore>>>,
     inner: Game,
     text: Option<String>,
-    store: Box<dyn Bridge<StoreWrapper<GlobalStore>>>,
 }
 
 impl Component for ShowBoard {
     type Message = Event;
-    type Properties = Props;
+    type Properties = ();
 
     fn create(_: Self::Properties, link: ComponentLink<Self>) -> Self {
         let callback = link.callback(Event::PostStoreMsg);
@@ -32,41 +31,14 @@ impl Component for ShowBoard {
     }
 
     fn update(&mut self, msg: Self::Message) -> ShouldRender {
-        match msg {
-            Event::UpdateText(text) => {
-                self.store.send(Request::UpdatePost(self.id, text));
-                false
-            }
-            Event::Delete => {
-                self.store.send(Request::RemovePost(self.id));
-                false
-            }
-            Event::PostStoreMsg(state) => {
-                let state = state.borrow();
-
-                // Only update if the post changed.
-                if let Some(text) = state.posts.get(&self.id) { self.text.neq_assign(Some(text.clone())) } else { false }
-            }
-        }
+        unimplemented!()
     }
 
     fn change(&mut self, props: Self::Properties) -> ShouldRender {
-        self.id.neq_assign(props.id)
+        unimplemented!()
     }
 
     fn view(&self) -> Html {
-        let text = self.text.as_deref().unwrap_or("<pending>");
-
-        html! {
-            <div>
-                <h2>{ format!("Post #{}", self.id) }</h2>
-                <p>{text}</p>
-
-                <TextInput value=text onsubmit=self.link.callback(Event::UpdateText) />
-                <button onclick=self.link.callback(|_| Event::Delete)>
-                    { "Delete" }
-                </button>
-            </div>
-        }
+        unimplemented!()
     }
 }

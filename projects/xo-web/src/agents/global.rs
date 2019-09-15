@@ -1,6 +1,6 @@
 use crate::localization::Localization;
 use std::collections::HashMap;
-use xo_basic::{Player, Winner};
+use xo_basic::{Game, Player, Winner};
 use yew::agent::AgentLink;
 use yewtil::store::{Store, StoreWrapper};
 
@@ -10,7 +10,7 @@ pub enum Request {
     StartNewGame,
     EnableBot,
     DisableBot,
-    Winner(Winner),
+    GameFinish(Game),
     ReplayRecord,
     DownloadRecords,
 }
@@ -20,7 +20,7 @@ pub enum Action {
     ChangeLanguage(Localization),
     StartNewGame,
     ChangeBot(bool),
-    Winner(Winner),
+    GameFinish(Game),
     ReplayRecord,
     DownloadRecords,
 }
@@ -45,8 +45,8 @@ impl Store for GlobalStore {
             Request::ChangeLanguage(lang) => {
                 link.send_message(Action::ChangeLanguage(lang));
             }
-            Request::Winner(w) => {
-                link.send_message(Action::Winner(w));
+            Request::GameFinish(g) => {
+                link.send_message(Action::GameFinish(g));
             }
             _ => unimplemented!(),
         }
@@ -55,11 +55,6 @@ impl Store for GlobalStore {
     fn reduce(&mut self, msg: Self::Action) {
         match msg {
             Action::ChangeLanguage(lang) => self.localization = lang,
-            Action::Winner(w) => match w {
-                Winner::X => self.score.0 += 1,
-                Winner::Tie => self.score.1 += 1,
-                Winner::O => self.score.2 += 1,
-            },
             _ => unimplemented!(),
         }
     }

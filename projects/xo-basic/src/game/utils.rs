@@ -38,7 +38,7 @@ impl Default for Player {
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum Winner {
+    Draw,
     X,
     O,
-    Tie,
 }
