@@ -37,6 +37,39 @@ impl Component for ShowBoard {
     }
 
     fn view(&self) -> Html {
-        unimplemented!()
+        html! {
+                <div class="game">
+            <div class="board">
+                <div class="square top left" tabindex="0">
+                    <div class=""></div>
+                </div>
+                <div class="square top" tabindex="0">
+                    <div class=""></div>
+                </div>
+                <div class="square top right" tabindex="0">
+                    <div class=""></div>
+                </div>
+                <div class="square left" tabindex="0">
+                    <div class="o"></div>
+                </div>
+                <div class="square" tabindex="0">
+                    <div class="x"></div>
+                </div>
+                <div class="square right" tabindex="0">
+                    <div class=""></div>
+                </div>
+                <div class="square bottom left" tabindex="0">
+                    <div class=""></div>
+                </div>
+                <div class="square bottom" tabindex="0">
+                    <div class=""></div>
+                </div>
+                <div class="square bottom right" tabindex="0">
+                    <div class=""></div>
+                </div>
+            </div>
+            <div class="restart" style="display: none;"></div>
+        </div>
+                }
     }
 }
